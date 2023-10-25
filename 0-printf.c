@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 	va_list(_printf_args);
 	va_start(_printf_args, format);
 
-	if (*format == NULL)
+	if (format == NULL)
 		return (-1);
 
 	va_end(_printf_args);
