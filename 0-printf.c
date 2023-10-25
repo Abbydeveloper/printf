@@ -5,6 +5,22 @@
 #include "main.h"
 
 /**
+ * _strlen - Return the length of a string
+ * @s: string to return length
+ *
+ * Return: the length of s
+ */
+int _strlen(char *s)
+{
+	int i = 0;
+
+	while (s[i] != '\0')
+		i++;
+
+	return (i);
+}
+
+/**
  * _printf - function that produces output according to a format
  * @format: character string
  *
@@ -16,7 +32,7 @@ int _printf(const char *format, ...)
 {
 	int count = 0;
 
-	va_list(_printf_args);
+	va_list _printf_args;
 	va_start(_printf_args, format);
 
 	if (format == NULL)
@@ -24,8 +40,41 @@ int _printf(const char *format, ...)
 
 	while(*format)
 	{
-		if (*format != '%')
+		if (*format == '%')
+		{
+			format++;
+
+			if (*format == '\0')
+				break;
+
+			else if (*format == '%')
+			{
+				count++;
+				write(1, format, 1);
+			}
+			else if (*format == 'c')
+			{
+				char s = va_arg(_printf_args, int);
+
+				count++;
+				write(1, &s, 1);
+			}
+			else if (*format == 's')
+			{
+				char *str = va_arg(_printf_args, char *);
+				int len = _strlen(str);
+
+				count += len;
+				write(1, &str, len);
+			} 
+		}
+		else
+		{
+			count++;
 			write(1, format, 1);
+		}
+
+		format++;
 	}
 	va_end(_printf_args);
 	return (count);
