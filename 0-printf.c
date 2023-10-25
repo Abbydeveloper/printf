@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 			else if (*format == 's')
 			{
 				str = va_arg(_printf_args, char *);
-				str = (str == NULL) ? "(nul)" : str;
+				str = (str == NULL) ? "(null)" : str;
 				count += _strlen(str);
 				write(1, str, _strlen(str));
 			}
