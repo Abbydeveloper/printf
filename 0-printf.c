@@ -54,18 +54,21 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 'c')
 			{
-				char s = va_arg(_printf_args, int);
+				char c = va_arg(_printf_args, int);
 
 				count++;
-				write(1, &s, 1);
+				write(1, &c, 1);
 			}
 			else if (*format == 's')
 			{
-				char *str = va_arg(_printf_args, char *);
-				int len = _strlen(str);
+				char *str;
+				int len;
+
+				str = va_arg(_printf_args, char *);
+				len = _strlen(str);
 
 				count += len;
-				write(1, &str, len);
+				write(1, str, len);
 			} 
 		}
 		else
