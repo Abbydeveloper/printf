@@ -1,6 +1,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 #include "main.h"
 
 /**
@@ -23,7 +24,7 @@ int _printf(const char *format, ...)
 
 	while(*format)
 	{
-		if (*format != %)
+		if (*format != '%')
 			write(1, format, 1);
 	}
 	va_end(_printf_args);
