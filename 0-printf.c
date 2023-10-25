@@ -8,7 +8,8 @@
  */
 int _printf(const char *format, ...)
 {
-	int count = 0, va_list _printf_args;
+	int count = 0;
+	va_list _printf_args;
 
 	va_start(_printf_args, format);
 	if (format == NULL)
@@ -17,7 +18,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			char c, *str, int len;
+			char c, *str;
 
 			format++;
 			if (*format == '\0')
