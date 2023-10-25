@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -17,6 +18,7 @@ int _printf(const char *format, ...)
 	va_list(_printf_args);
 	va_start(_printf_args, format);
 
+	fputs(_printf_args, stdout);
 	va_end(_printf_args);
 	return (count);
 }
