@@ -14,8 +14,8 @@ int _printf(const char *format, ...)
 {
 	va_list(_printf_args);
 	va_start(_printf_args, format);
-	int count;
+	int count = 0;
 
-	va_end();
+	va_end(_printf_args);
 	return (count);
 }
